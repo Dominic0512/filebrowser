@@ -1,0 +1,21 @@
+version: '3' 
+
+services:
+  web:
+    build: ./nginx
+    image: web:v1.0.0
+    volumes:
+      - ./srv:/var/www/public
+    links:
+      - app
+    ports:
+      - "9001:9000"
+    restart: always
+  app:
+    image: filebrowser/filebrowser
+    volumes:
+      - .docker.json:/.docker.json
+      - ./srv:/srv
+    ports:
+      - "8080:80"
+    restart: always
