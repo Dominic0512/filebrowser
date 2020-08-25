@@ -2,7 +2,7 @@ version: '3'
 
 services:
   web:
-    build: ./nginx
+    build: ./nginx/local
     image: web:v1.0.0
     volumes:
       - ./srv:/var/www/public
